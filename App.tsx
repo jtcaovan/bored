@@ -18,16 +18,18 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView>
-        <Text>{activity}</Text>
-        <Text>Participants: {participants}</Text>
-        <Text>Category: {category}</Text>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text style={{fontSize: 32}}>{activity}</Text>
+        <Text style={{fontSize: 24}}>Participants: {participants}</Text>
+        <Text style={{fontSize: 24}}>Category: {category}</Text>
           <Button
             title="Give me something to do, I'm bored"
             onPress={() => {
               getActivity()
             }}
           />
+      </View>
     </SafeAreaView>
   );
 }
@@ -39,4 +41,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  items: {
+    fontSize:20,
+  }
 });
