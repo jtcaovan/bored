@@ -24,6 +24,7 @@ export default function App() {
         <Text style={{fontSize: 24}}>Participants: {participants}</Text>
         <Text style={{fontSize: 24}}>Category: {category}</Text>
           <Button
+            style={{}}
             title="Give me something to do, I'm bored"
             onPress={() => {
               getActivity()
