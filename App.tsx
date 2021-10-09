@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Button, Text, View, SafeAreaView} from 'react-native';
+import { style } from 'styled-system';
 
 export default function App() {
   const [activity, setActivity] = useState()
@@ -20,29 +21,35 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Text style={{fontSize: 32}}>{activity}</Text>
-        <Text style={{fontSize: 24}}>Participants: {participants}</Text>
-        <Text style={{fontSize: 24}}>Category: {category}</Text>
-          <Button
-            style={{}}
-            title="Give me something to do, I'm bored"
-            onPress={() => {
-              getActivity()
-            }}
-          />
-      </View>
+        <Text style={styles.header}>I'm Bored 😴</Text>
+        <View style={styles.activityContainer}>
+          <Text style={{fontSize: 28}}>{activity}</Text>
+          <Text style={{fontSize: 24}}>Participants: {participants}</Text>
+          <Text style={{fontSize: 24}}>Category: {category}</Text>
+            <Button            title="Give me something to do, I'm bored"
+              onPress={() => {
+                getActivity()
+              }}
+            />
+        </View>
+        </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex:1,
+    backgroundColor: "#14213d",
   },
-  items: {
-    fontSize:20,
+  header: {
+    textAlign: 'center',
+    fontSize: 36,
+    color: "#ffffff"
+  },
+  activityContainer: {
+    backgroundColor: "#e5e5e5",
+    margin: 32,
+    padding: 16,
   }
 });
