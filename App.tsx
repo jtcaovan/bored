@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Button, Text, View, SafeAreaView} from 'react-native';
-import { marginTop, style } from 'styled-system';
 
 export default function App() {
   const [activity, setActivity] = useState()
@@ -15,25 +13,26 @@ export default function App() {
     setActivity(bored.activity)
     setParticipants(bored.participants)
     setCategory(bored.type)
-    console.log(bored)
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headingContainer}>
         <Text style={styles.header}>I'm Bored 😴</Text>
-        <Text style={styles.information}>Information: </Text>
       </View>
 
       <View style={styles.activityContainer}>
-        <Text style={{fontSize: 28}}>{activity}</Text>
-        <Text style={{fontSize: 24}}>Participants: {participants}</Text>
-        <Text style={{fontSize: 24}}>Category: {category}</Text>
-          <Button title="Give me something to do, I'm bored"
-            onPress={() => {
-              getActivity()
-            }}
-          />
+        <Text style={styles.activity}>{activity}</Text>
+      </View>
+
+      <View style={styles.formContainer}>
+        <Text style={styles.form}>Participants: {participants}</Text>
+        <Text style={styles.form}>Category: {category}</Text>
+        <Button 
+        title="Give me something to do, I'm bored"
+        color='#ffffff'
+        accessibilityLabel='Get an activity'
+        onPress={() => {getActivity()}}/>
       </View>
     </SafeAreaView>
   );
@@ -46,6 +45,7 @@ const styles = StyleSheet.create({
   },
   headingContainer: {
     marginTop: 24,
+    color: "#ffffff"
   },
   header: {
     textAlign: 'center',
@@ -59,7 +59,27 @@ const styles = StyleSheet.create({
   },
   activityContainer: {
     backgroundColor: "#e5e5e5",
+    flex:1,
+    justifyContent: 'center',
+    alignContent: 'center',
+    height: '40%',
     margin: 32,
     padding: 16,
-  }
+  },
+  activity: {
+    fontSize: 32,
+    textAlign: 'center',
+    margin: 'auto',
+    padding: 'auto',
+  },
+  formContainer: {
+    margin: 32,
+    padding: 16,
+  },
+  form: {
+    color: '#ffffff',
+    paddingVertical: 16,
+    fontSize: 26, 
+  },
+  
 });
