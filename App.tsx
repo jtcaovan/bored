@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button, Text, View, SafeAreaView} from 'react-native';
+import { StyleSheet, Button, Text, View, ActivityIndicator, SafeAreaView} from 'react-native';
 
 export default function App() {
   const [activity, setActivity] = useState()
   const [participants, setParticipants] = useState()
   const [category, setCategory] = useState()
+  const [isLoading, setIsLoading] = useState(false)
   
 
   async function getActivity() {
+    setIsLoading(true) 
     const response = await fetch('http://www.boredapi.com/api/activity/')
     const bored = await response.json()
     setActivity(bored.activity)
     setParticipants(bored.participants)
     setCategory(bored.type)
+    setIsLoading(false)
   }
 
   return (
@@ -22,7 +25,8 @@ export default function App() {
       </View>
 
       <View style={styles.activityContainer}>
-        <Text style={styles.activity}>{activity}</Text>
+        <Text style={styles.activity}>
+          {isLoading ? <ActivityIndicator /> : activity}</Text>
       </View>
 
       <View style={styles.formContainer}>
